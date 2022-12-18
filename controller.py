@@ -48,3 +48,7 @@ def btn_click():
         if operation == '4':
             order = opers_with_txt.delete_value(view.input_delete_val(), file_path)
             print(order)
+        
+        if operation == '5':
+            new_path = view.input_new_path('.csv')
+            order = opers_with_txt.convert_to_csv(file_path, new_path)

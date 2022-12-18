@@ -1,4 +1,5 @@
 import view
+import csv
 # во всех случаях файл читается целиком, затем разбивается на строки
 
 def find(find_value, path):    #Функция нахождения контакта
@@ -68,4 +69,17 @@ def delete_value(value, path):  #Функция удаления контакт�
         else:
             with open(path, "w", encoding='utf-8') as w_file:
                 w_file.write('\n'.join(data))
-            return 'Контакт удален'   
+            return 'Контакт удален'
+
+def convert_to_csv(path, new_path):
+    with open(path, 'r', encoding='utf-8') as data_file:
+        file_reader = data_file.read().split('\n')
+        data = []
+        for i in range(0, len(file_reader), 4): 
+            data.append([file_reader[i], file_reader[i+1], file_reader[i+2]])
+    
+    with open(new_path, mode="w", encoding='utf-8', newline='') as w_file:
+        file_writer = csv.writer(w_file, delimiter = ";", lineterminator="\r\n")
+        for i in data:
+            file_writer.writerow(i)
+    
