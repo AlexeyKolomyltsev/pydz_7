@@ -1,7 +1,6 @@
 import csv
 import view
 
-
 def find(find_value, path):    #Функция нахождения контакта
     with open(path, encoding='utf-8') as data_file:
         file_reader = csv.reader(data_file, delimiter = ";")
@@ -17,6 +16,7 @@ def add_value(value, path): #Функция добавления контакт�
     with open(path, mode="a", encoding='utf-8') as w_file:
         file_writer = csv.writer(w_file, delimiter = ";", lineterminator="\r\n")
         file_writer.writerow(value)
+    print('Контакт добавлен')
 
 def change_value(value, path):  #Функция изменения контакта
     with open(path, encoding='utf-8') as data_file:

@@ -1,4 +1,5 @@
 import opers_with_csv
+import opers_with_txt
 import view
 import os
 
@@ -17,7 +18,6 @@ def btn_click():
 
         if operation == '2':
             order = view.differ_val()
-            print(order)
             opers_with_csv.add_value(order, file_path)
         
         if operation == '3':
@@ -26,4 +26,21 @@ def btn_click():
 
         if operation == '4':
             order = opers_with_csv.delete_value(view.input_delete_val(), file_path)
+            print(order)
+
+    elif file_ext == '.txt':
+        if operation == '1':
+            order = opers_with_txt.find(view.value(), file_path)
+            print(order)
+
+        if operation == '2':
+            order = view.differ_val()
+            opers_with_txt.add_value(order, file_path)
+
+        if operation == '3':
+            order = opers_with_txt.change_value(view.input_change_val(), file_path)
+            print(order)
+        
+        if operation == '4':
+            order = opers_with_txt.delete_value(view.input_delete_val(), file_path)
             print(order)
