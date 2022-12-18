@@ -1,21 +1,29 @@
 import opers_with_csv
 import view
+import os
 
 def btn_click():
+
+    file_path = view.choose_file()
+    file_ext = os.path.splitext(file_path)[1]
     operation = view.choose_oper()
-    if operation == '1':
-        order = opers_with_csv.find(view.value())
-        print(order)
 
-    if operation == '2':
-        order = view.differ_val()
-        print(order)
-        opers_with_csv.add_value(order)
-    
-    if operation == '3':
-        order = opers_with_csv.change_value(view.input_change_val())
-        print(order)
 
-    if operation == '4':
-        order = opers_with_csv.delete_value(view.input_delete_val())
-        print(order)
+    if file_ext == '.csv':
+        
+        if operation == '1':
+            order = opers_with_csv.find(view.value(), file_path)
+            print(order)
+
+        if operation == '2':
+            order = view.differ_val()
+            print(order)
+            opers_with_csv.add_value(order, file_path)
+        
+        if operation == '3':
+            order = opers_with_csv.change_value(view.input_change_val(), file_path)
+            print(order)
+
+        if operation == '4':
+            order = opers_with_csv.delete_value(view.input_delete_val(), file_path)
+            print(order)

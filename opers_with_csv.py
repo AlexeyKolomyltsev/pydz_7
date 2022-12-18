@@ -1,8 +1,9 @@
 import csv
 import view
 
-def find(find_value):    #Функция нахождения контакта
-    with open("data_base.csv", encoding='utf-8') as data_file:
+
+def find(find_value, path):    #Функция нахождения контакта
+    with open(path, encoding='utf-8') as data_file:
         file_reader = csv.reader(data_file, delimiter = ";")
         data = []
         for i in file_reader:
@@ -12,13 +13,13 @@ def find(find_value):    #Функция нахождения контакта
             data = 'Нет такого контакта'
     return data
 
-def add_value(value): #Функция добавления контакта
-    with open("data_base.csv", mode="a", encoding='utf-8') as w_file:
-        file_writer = csv.writer(w_file, delimiter = ";", lineterminator="\r")
+def add_value(value, path): #Функция добавления контакта
+    with open(path, mode="a", encoding='utf-8') as w_file:
+        file_writer = csv.writer(w_file, delimiter = ";", lineterminator="\r\n")
         file_writer.writerow(value)
 
-def change_value(value):  #Функция изменения контакта
-    with open("data_base.csv", encoding='utf-8') as data_file:
+def change_value(value, path):  #Функция изменения контакта
+    with open(path, encoding='utf-8') as data_file:
         file_reader = csv.reader(data_file, delimiter = ";")
         data_value = []
         data = []
@@ -32,14 +33,14 @@ def change_value(value):  #Функция изменения контакта
         if len(data_value) == 0:
             return 'Нет такого контакта'
         else:
-            with open("data_base.csv", mode="w", encoding='utf-8') as w_file:
+            with open(path, mode="w", encoding='utf-8') as w_file:
                 file_writer = csv.writer(w_file, delimiter = ";", lineterminator="\r")
                 for i in data:
                     file_writer.writerow(i)
             return 'Контакт изменен'
             
-def delete_value(value):  #Функция удаления контакта
-    with open("data_base.csv", encoding='utf-8') as data_file:
+def delete_value(value, path):  #Функция удаления контакта
+    with open(path, encoding='utf-8') as data_file:
         file_reader = csv.reader(data_file, delimiter = ";")
         data_value = []
         data = []
@@ -52,7 +53,7 @@ def delete_value(value):  #Функция удаления контакта
         if len(data_value) == 0:
             return 'Нет такого контакта'
         else:
-            with open("data_base.csv", mode="w", encoding='utf-8') as w_file:
+            with open(path, mode="w", encoding='utf-8') as w_file:
                 file_writer = csv.writer(w_file, delimiter = ";", lineterminator="\r")
                 for i in data:
                     file_writer.writerow(i)
