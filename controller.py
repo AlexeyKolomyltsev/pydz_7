@@ -28,6 +28,10 @@ def btn_click():
             order = opers_with_csv.delete_value(view.input_delete_val(), file_path)
             print(order)
 
+        if operation == '5':
+            new_path = view.input_new_path('.txt')
+            order = opers_with_csv.convert_to_txt(file_path, new_path)
+
     elif file_ext == '.txt':
         if operation == '1':
             order = opers_with_txt.find(view.value(), file_path)

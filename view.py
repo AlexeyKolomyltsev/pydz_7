@@ -12,7 +12,7 @@ def choose_file():
 
 def choose_oper():
     while (oper:=
-    input('Выберите операцию с контактом: 1-Найти 2-Добавить, 3-Изменить, 4-Удалить ')) not in ('1', '2', '3', '4'):
+    input('Выберите операцию с контактом: 1-Найти 2-Добавить, 3-Изменить, 4-Удалить, 5-Конвертировать ')) not in ('1', '2', '3', '4', '5'):
         print('Нет такой операции')
     return oper
 
@@ -32,3 +32,6 @@ def input_delete_val():
     value = input("введите фамилию или номер контакта, который необходимо удалить ").capitalize()
     return value
 
+def input_new_path(end):
+    new_path = 'data_files' + os.sep + input("Введите название для файла ") + end
+    return new_path

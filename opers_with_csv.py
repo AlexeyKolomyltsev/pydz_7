@@ -57,4 +57,18 @@ def delete_value(value, path):  #Функция удаления контакт�
                 file_writer = csv.writer(w_file, delimiter = ";", lineterminator="\r")
                 for i in data:
                     file_writer.writerow(i)
-            return 'Контакт удален'        
+            return 'Контакт удален'
+
+def convert_to_txt(path, new_path):
+    with open(path, encoding='utf-8') as data_file:
+        file_reader = csv.reader(data_file, delimiter = ";")
+        data = []
+        for i in file_reader:
+                data.append(i)
+        
+    with open(new_path, "w", encoding='utf-8') as w_file:
+        for line in data:
+            for val in line:
+                w_file.write(val + '\n')
+            w_file.write('\n')
+        print('Файл конвертирован в txt')
